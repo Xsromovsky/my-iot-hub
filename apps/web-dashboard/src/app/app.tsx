@@ -1,9 +1,9 @@
-import NxWelcome from './nx-welcome';
+import LoginPage from "../pages/LoginPage";
 
 export function App() {
   return (
-    <div>
-      <NxWelcome title="web-dashboard" />
+    <div className="bg-primary min-h-screen w-screen">
+      <LoginPage/>
     </div>
   );
 }

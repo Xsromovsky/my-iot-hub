@@ -11,7 +11,16 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
+    colors:{
+      primary: "#1F1F1F",
+      secondary: "#292929",
+      third: "#333333",
+      accent: "#474747",
+      white: "#E0E0E0",
+      test: "red",
+
+    },
     extend: {},
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
