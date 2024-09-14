@@ -17,8 +17,11 @@ module.exports = {
       third: "#333333",
       accent: "#474747",
       white: "#E0E0E0",
-      test: "red",
-
+      error: "#FF0800",
+      warning: "#FFA500",
+      success: "#00FF00",
+      info: "#00BFFF",
+      test: "purple",
     },
     extend: {},
   },
