@@ -13,18 +13,19 @@ import {
 import { Input } from '../ui/Input';
 import { Button } from '../ui/Button';
 import { formInutClass, formLabelClass, signUpFormClass } from './classes';
+import { ERROR_MESSAGE, LOGIN_PAGE } from '@/src/utils/Constants';
 
 const signUpInputs = z
   .object({
     fullName: z.string(),
-    email: z.string().email({ message: 'Invalid email address' }),
+    email: z.string().email({ message: ERROR_MESSAGE.INVALID_EMAIL }),
     password: z
       .string()
-      .min(8, { message: 'Password must be at least 8 characters' }),
+      .min(8, { message: ERROR_MESSAGE.PASSWORD_INVALID }),
     confirmPassword: z.string(),
   })
   .refine(({ password, confirmPassword }) => password === confirmPassword, {
-    message: 'Password not match',
+    message: ERROR_MESSAGE.PASSWORD_NOT_MATCH,
     path: ['confirmPassword'],
   });
 
@@ -46,9 +47,9 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="flex bg-secondary w-1/6 justify-center items-center rounded-lg">
+    <div className="flex bg-secondary w-full justify-center items-center rounded-lg">
       <div className="w-full h-full flex flex-col items-center m-3">
-        <h1 className="text-white p-1 text-[30px] font-bold">Sign up</h1>
+        {/* <h1 className="text-white p-1 text-[30px] font-bold">Sign up</h1> */}
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className={signUpFormClass}>
             <FormField
@@ -58,7 +59,7 @@ const SignUpForm = () => {
                   <FormItem className='mb-1'>
                     <FormLabel className={formLabelClass}>Full name</FormLabel>
                     <FormControl>
-                      <Input type="text" className={formInutClass} {...field} placeholder='Your name'/>
+                      <Input type="text" className={formInutClass} {...field} placeholder={LOGIN_PAGE.YOUR_NAME}/>
                     </FormControl>
                     <FormMessage className="text-error px-1" />
                   </FormItem>
@@ -72,7 +73,7 @@ const SignUpForm = () => {
                   <FormItem className='mb-1'>
                     <FormLabel className={formLabelClass}>Email</FormLabel>
                     <FormControl>
-                      <Input type="text" className={formInutClass} {...field} placeholder='example@mail.com' />
+                      <Input type="text" className={formInutClass} {...field} placeholder={LOGIN_PAGE.EXAMPLE_EMAIL} />
                     </FormControl>
                     <FormMessage className="text-error px-1" />
                   </FormItem>
@@ -86,7 +87,7 @@ const SignUpForm = () => {
                   <FormItem className='mb-1'>
                     <FormLabel className={formLabelClass}>Password</FormLabel>
                     <FormControl>
-                      <Input type="password" className={formInutClass} {...field} placeholder='password'/>
+                      <Input type="password" className={formInutClass} {...field} placeholder={LOGIN_PAGE.PASSWORD} />
                     </FormControl>
                     <FormMessage className="text-error px-1" />
                   </FormItem>
@@ -100,14 +101,14 @@ const SignUpForm = () => {
                   <FormItem className='mb-1'>
                     <FormLabel className={formLabelClass}>Confirm Password</FormLabel>
                     <FormControl>
-                      <Input type="password" className={formInutClass} {...field}  placeholder='confirm password'/>
+                      <Input type="password" className={formInutClass} {...field}  placeholder={LOGIN_PAGE.CON_PASSWORD}/>
                     </FormControl>
                     <FormMessage className="text-error px-1" />
                   </FormItem>
                 );
               }}
             />
-            <Button variant={'default'} className='w-full mt-2'>Sign Up</Button>
+            <Button variant={'default'} className='w-full mt-2'>{LOGIN_PAGE.SIGN_UP}</Button>
           </form>
         </Form>
       </div>

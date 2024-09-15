@@ -14,9 +14,10 @@ import {
 } from '@/src/components/ui/Form';
 import { Input } from '@/src/components/ui/Input';
 import { formInutClass } from './classes';
+import { ERROR_MESSAGE, LOGIN_PAGE } from '@/src/utils/Constants';
 
 const loginInputs = z.object({
-  email: z.string().email({ message: 'Invalid email address' }),
+  email: z.string().email({ message: ERROR_MESSAGE.INVALID_EMAIL }),
   password: z.string(),
 });
 
@@ -36,11 +37,11 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="flex bg-secondary w-1/6 justify-center items-center rounded-lg">
+    <div className="flex bg-secondary w-full justify-center items-center rounded-lg">
       <div className="w-full h-full flex flex-col items-center m-3">
-        <h1 className="text-white p-1 text-[30px] font-bold">Sign in</h1>
+        {/* <h1 className="text-white p-1 text-[30px] font-bold">Sign in</h1> */}
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full px-4">
             <FormField
               name="email"
               render={({ field }) => {
@@ -48,7 +49,7 @@ const LoginForm = () => {
                   <FormItem className="mb-1">
                     <FormLabel className="px-1">Email</FormLabel>
                     <FormControl>
-                      <Input type="text" className={formInutClass} {...field} />
+                      <Input type="text" className={formInutClass} {...field} placeholder={LOGIN_PAGE.EXAMPLE_EMAIL}/>
                     </FormControl>
                     <FormMessage className="text-error px-1" />
                   </FormItem>
@@ -62,7 +63,7 @@ const LoginForm = () => {
                   <FormItem>
                     <FormLabel className="px-1">Password</FormLabel>
                     <FormControl>
-                      <Input type="password" className={formInutClass} />
+                      <Input type="password" className={formInutClass} placeholder={LOGIN_PAGE.PASSWORD}/>
                     </FormControl>
                   </FormItem>
                 );
@@ -72,7 +73,7 @@ const LoginForm = () => {
               variant={'default'}
               className="w-full mt-3"
             >
-              Sign in
+              {LOGIN_PAGE.SIGN_IN}
             </Button>
           </form>
         </Form>
