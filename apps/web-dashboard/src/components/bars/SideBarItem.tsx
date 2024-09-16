@@ -10,8 +10,8 @@ const SideBarItem = (props: Props) => {
     
   return (
     <li className='flex justify-between items-center cursor-pointer hover:bg-third p-2'>
-        <span>{props.label}</span>
-        {props.isAccordion ? <ChevronDownIcon/> : null}
+        <span className='text-lg'>{props.label}</span>
+        {props.isAccordion ? <ChevronDownIcon className='size-[25px]'/> : null}
     </li>
   )
 }
