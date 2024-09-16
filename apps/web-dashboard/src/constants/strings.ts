@@ -18,3 +18,18 @@ export const ERROR_MESSAGE = {
     PASSWORD_INVALID: "Password must be at least 8 characters",
     PASSWORD_NOT_MATCH: "Password not match",
 }
+
+export const DEVICE_STRINGS = {
+    DEVICE_NAME: "Device name",
+    TEMPERATURE: "Temperature: ",
+    HUMIDITY: "Humidity: ",
+    OFFLINE: "Offline",
+    ONLINE: "Online",
+    STATUS: "Status: ",
+}
+
+export const UNITS = {
+    PERCENTAGE: "%",
+    CELSIUS: " ˚C",
+    FAHRENHEIT: " ˚F",
+}

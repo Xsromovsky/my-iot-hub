@@ -3,7 +3,7 @@ import LoginForm from '../components/forms/LoginForm';
 import SignUpForm from '../components/forms/SignUpForm';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/Tabs';
 import { TabsContent } from '@radix-ui/react-tabs';
-import { LOGIN_PAGE } from '../utils/Constants';
+import { LOGIN_PAGE } from '../constants/strings';
 
 
 const LoginPage = () => {

@@ -13,7 +13,7 @@ import {
 import { Input } from '../ui/Input';
 import { Button } from '../ui/Button';
 import { formInutClass, formLabelClass, signUpFormClass } from './classes';
-import { ERROR_MESSAGE, LOGIN_PAGE } from '@/src/utils/Constants';
+import { ERROR_MESSAGE, LOGIN_PAGE } from '@/src/constants/strings';
 
 const signUpInputs = z
   .object({

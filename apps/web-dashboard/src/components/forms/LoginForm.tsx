@@ -14,7 +14,7 @@ import {
 } from '@/src/components/ui/Form';
 import { Input } from '@/src/components/ui/Input';
 import { formInutClass } from './classes';
-import { ERROR_MESSAGE, LOGIN_PAGE } from '@/src/utils/Constants';
+import { ERROR_MESSAGE, LOGIN_PAGE } from '@/src/constants/strings';
 
 const loginInputs = z.object({
   email: z.string().email({ message: ERROR_MESSAGE.INVALID_EMAIL }),
