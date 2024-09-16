@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 /* You can add global styles to this file, and also import other style files */
+
+@layer base {
+    html, body {
+      @apply h-full w-full;
+      background-color: theme('colors.primary'); /* Ensure 'primary' is defined in Tailwind config */
+    }
+  }
