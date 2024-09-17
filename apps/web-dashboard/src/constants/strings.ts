@@ -33,3 +33,9 @@ export const UNITS = {
     CELSIUS: " ˚C",
     FAHRENHEIT: " ˚F",
 }
+
+export const DROPDOWN_MENU = {
+    PROFILE: "Profile",
+    SETTINGS: "Settings",
+    LOGOUT: "Logout"
+}

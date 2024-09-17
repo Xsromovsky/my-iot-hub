@@ -2,7 +2,7 @@ import React from 'react';
 import TopBar from '../components/bars/TopBar';
 import SideBar from '../components/bars/SideBar';
 import { HOME_PAGE } from '../constants/strings';
-import DeviceCard from '../components/DeviceCard';
+import DeviceCard from '../components/DeviceComponents/DeviceCard';
 import { deviceList } from '../temp/deviceList';
 
 const HomePage = () => {
