@@ -11,6 +11,7 @@ import classNames from 'classnames';
 import { Device } from '../../temp/deviceList';
 import { EnterFullScreenIcon } from '@radix-ui/react-icons';
 import { DEVICE_STRINGS, UNITS } from '../../constants/strings';
+import DeviceDialog from './DeviceDialog';
 
 type Props = {
   device: Device;
@@ -20,11 +21,14 @@ const DeviceCard = (props: Props) => {
   // const [isOffline, setIsOffline] = useState(false)
 
   const cardClass = twMerge(
-    classNames(' w-[400px] min-h-[200px] h-auto m-2 border-0 text-white', {
+    classNames(' w-[20%] min-h-[200px] h-auto m-2 border-0 text-white', {
       'bg-secondary': !props.device.isOffline,
       'bg-red-700': props.device.isOffline,
     })
   );
+  const statusClass = twMerge(classNames({
+    'text-green-600': !props.device.isOffline
+  }))
 
   return (
     <Card className={cardClass}>
@@ -32,11 +36,13 @@ const DeviceCard = (props: Props) => {
         <CardTitle>{props.device.name}</CardTitle>
         <CardDescription>
           {DEVICE_STRINGS.STATUS}
-          {props.device.isOffline
+          <label className={statusClass}>{props.device.isOffline
             ? DEVICE_STRINGS.OFFLINE
-            : DEVICE_STRINGS.ONLINE}
+            : DEVICE_STRINGS.ONLINE}</label>
+         
         </CardDescription>
-        <EnterFullScreenIcon className="absolute top-1 right-2 size-[20px] cursor-pointer hover:scale-125 transition duration-150" />
+        {/* <EnterFullScreenIcon className="absolute top-1 right-2 size-[20px] cursor-pointer hover:scale-125 transition duration-150" /> */}
+        <DeviceDialog device={props.device}/>
       </CardHeader>
       <CardContent className="flex flex-col text-lg font-bold">
         <span>

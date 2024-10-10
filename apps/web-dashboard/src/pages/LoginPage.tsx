@@ -7,6 +7,10 @@ import { LOGIN_PAGE } from '../constants/strings';
 
 
 const LoginPage = () => {
+
+
+
+
   return (
     <div className="flex text-white h-screen w-full">
       <div className="flex justify-center items-center w-full h-full">

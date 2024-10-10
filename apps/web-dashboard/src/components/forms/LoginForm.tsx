@@ -15,6 +15,8 @@ import {
 import { Input } from '@/src/components/ui/Input';
 import { formInutClass } from './classes';
 import { ERROR_MESSAGE, LOGIN_PAGE } from '@/src/constants/strings';
+import { useNavigate } from '@tanstack/react-router';
+import { useLogin } from '@/src/hooks/useLogin';
 
 const loginInputs = z.object({
   email: z.string().email({ message: ERROR_MESSAGE.INVALID_EMAIL }),
@@ -24,6 +26,8 @@ const loginInputs = z.object({
 type LoginForm = z.infer<typeof loginInputs>;
 
 const LoginForm = () => {
+  const { mutate: login } = useLogin()
+  // const navigate = useNavigate()
   const form = useForm<LoginForm>({
     resolver: zodResolver(loginInputs),
     defaultValues: {
@@ -33,7 +37,10 @@ const LoginForm = () => {
   });
 
   const onSubmit: SubmitHandler<LoginForm> = (data) => {
-    console.log(data);
+    // console.log(data);
+    // navigate({to: '/home', replace: true})
+    login({email: data.email, password: data.password})
+
   };
 
   return (
@@ -58,12 +65,12 @@ const LoginForm = () => {
             />
             <FormField
               name="password"
-              render={() => {
+              render={({ field }) => {
                 return (
                   <FormItem>
                     <FormLabel className="px-1">Password</FormLabel>
                     <FormControl>
-                      <Input type="password" className={formInutClass} placeholder={LOGIN_PAGE.PASSWORD}/>
+                      <Input type="password" className={formInutClass} {...field} placeholder={LOGIN_PAGE.PASSWORD}/>
                     </FormControl>
                   </FormItem>
                 );

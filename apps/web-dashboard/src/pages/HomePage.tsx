@@ -4,6 +4,8 @@ import SideBar from '../components/bars/SideBar';
 import { HOME_PAGE } from '../constants/strings';
 import DeviceCard from '../components/DeviceComponents/DeviceCard';
 import { deviceList } from '../temp/deviceList';
+import DeviceList from '../components/DeviceComponents/DeviceList';
+import DeviceStats from '../components/DeviceComponents/DeviceStats';
 
 const HomePage = () => {
   return (
@@ -12,10 +14,9 @@ const HomePage = () => {
       <div className="flex h-screen">
         <SideBar />
         <div className="flex-1">
-          <div className="flex flex-wrap justify-center mt-2">
-            {deviceList.map((device, index) => (
-              <DeviceCard device={device} key={index} />
-            ))}
+          <div className=" mt-2">
+            <DeviceStats/>
+            <DeviceList/>
           </div>
         </div>
       </div>

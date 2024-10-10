@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '../ui/DropDownMenu';
 import { DROPDOWN_MENU } from '@/src/constants/strings';
+import { Link } from '@tanstack/react-router';
 
 type Props = {};
 
@@ -25,7 +26,7 @@ const Menu = (props: Props) => {
         <DropdownMenuItem>{DROPDOWN_MENU.PROFILE}</DropdownMenuItem>
         <DropdownMenuItem>{DROPDOWN_MENU.SETTINGS}</DropdownMenuItem>
         <DropdownMenuSeparator className="bg-primary" />
-        <DropdownMenuItem>{DROPDOWN_MENU.LOGOUT}</DropdownMenuItem>
+        <DropdownMenuItem><Link to='/'>{DROPDOWN_MENU.LOGOUT}</Link></DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
