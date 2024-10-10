@@ -54,7 +54,7 @@ const LoginForm = () => {
               render={({ field }) => {
                 return (
                   <FormItem className="mb-1">
-                    <FormLabel className="px-1">Email</FormLabel>
+                    <FormLabel className="px-1">{LOGIN_PAGE.EMAIL}</FormLabel>
                     <FormControl>
                       <Input type="text" className={formInutClass} {...field} placeholder={LOGIN_PAGE.EXAMPLE_EMAIL}/>
                     </FormControl>
@@ -68,7 +68,7 @@ const LoginForm = () => {
               render={({ field }) => {
                 return (
                   <FormItem>
-                    <FormLabel className="px-1">Password</FormLabel>
+                    <FormLabel className="px-1">{LOGIN_PAGE.PASSWORD}</FormLabel>
                     <FormControl>
                       <Input type="password" className={formInutClass} {...field} placeholder={LOGIN_PAGE.PASSWORD}/>
                     </FormControl>

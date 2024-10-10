@@ -7,18 +7,17 @@ import {
   createRouter,
   createRoute,
   createRootRoute,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/router-devtools'
-import { QueryClient } from '@tanstack/react-query'
+} from '@tanstack/react-router';
+import { TanStackRouterDevtools } from '@tanstack/router-devtools';
+import { QueryClient } from '@tanstack/react-query';
 
-
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 export function App() {
   return (
-    <div className="min-h-screen w-screen">
-      <LoginPage/>
-    </div>
+      <div className="min-h-screen w-screen">
+        <LoginPage />
+      </div>
   );
 }
 

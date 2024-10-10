@@ -9,11 +9,19 @@ import {
   DropdownMenuTrigger,
 } from '../ui/DropDownMenu';
 import { DROPDOWN_MENU } from '@/src/constants/strings';
-import { Link } from '@tanstack/react-router';
+import { Link, useNavigate } from '@tanstack/react-router';
+import { useUser } from '@/src/contexts/UserContext';
 
-type Props = {};
 
-const Menu = (props: Props) => {
+
+const Menu = () => {
+  const { logout } = useUser()
+  const navigate = useNavigate()
+  const handleLogout = () => {
+    logout();
+    navigate({to: '/', replace: true})
+
+  }
   return (
     // TODO add real user name
     <DropdownMenu>
@@ -26,7 +34,7 @@ const Menu = (props: Props) => {
         <DropdownMenuItem>{DROPDOWN_MENU.PROFILE}</DropdownMenuItem>
         <DropdownMenuItem>{DROPDOWN_MENU.SETTINGS}</DropdownMenuItem>
         <DropdownMenuSeparator className="bg-primary" />
-        <DropdownMenuItem><Link to='/'>{DROPDOWN_MENU.LOGOUT}</Link></DropdownMenuItem>
+        <DropdownMenuItem className='cursor-pointer' onClick={handleLogout}>{DROPDOWN_MENU.LOGOUT}</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -9,18 +9,31 @@ import { createRouter, RouterProvider } from '@tanstack/react-router';
 import { notFoundRoute } from './routes/notFound.lazy';
 import { homeRoute } from './routes/home.lazy';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import useAuth from './hooks/useAuth';
+import { UserProvider } from './contexts/UserContext';
 
-const routeTree = rootRoute._addFileChildren([indexRoute, aboutRoute, notFoundRoute, homeRoute])
+const routeTree = rootRoute._addFileChildren([
+  indexRoute,
+  aboutRoute,
+  notFoundRoute,
+  homeRoute,
+]);
 
-const router = createRouter({ routeTree })
+const router = createRouter({ routeTree, context: { auth: undefined! } });
 
 declare module '@tanstack/react-router' {
   interface Register {
-    router: typeof router
+    router: typeof router;
   }
 }
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
+
+function InnerApp() {
+  const auth = useAuth();
+  router.update({ context: { auth } });
+  return <RouterProvider router={router} />;
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -29,8 +42,10 @@ root.render(
   <StrictMode>
     {/* <App /> */}
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-
+      <UserProvider>
+        <InnerApp />
+      </UserProvider>
+      {/* <InnerApp /> */}
     </QueryClientProvider>
   </StrictMode>
 );
