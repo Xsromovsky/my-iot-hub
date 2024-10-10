@@ -1,7 +1,15 @@
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
+import { createRootRoute, createRootRouteWithContext, Link, Outlet } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+import NotFoundPage from '../pages/NotFoundPage';
 
-export const rootRoute = createRootRoute({
+interface MyRouterContext {
+  auth: {
+    isAuthenticated: boolean;
+    handleChange: () => void;
+  }
+}
+
+export const rootRoute = createRootRouteWithContext<MyRouterContext>()({
   component: () => (
     <>
       
@@ -9,4 +17,5 @@ export const rootRoute = createRootRoute({
       <TanStackRouterDevtools />
     </>
   ),
+  notFoundComponent: NotFoundPage
 })
