@@ -51,7 +51,15 @@ export class UserService {
         email,
       }
     })
+  }
 
+  findByIdAndRt(id: string, refresh_token: string) {
+    return this.prisma.user.findUnique({
+      where: {
+        id,
+        refresh_token,
+      }
+    })
   }
 
   update(id: string, updateUserDto: UpdateUserDto) {

@@ -12,8 +12,8 @@ export class CreateUserDto {
     @IsString()
     password: string;
 
-    // @IsString()
-    // refresh_token: string;
+    @IsString()
+    refresh_token?: string;
 
 
 }
